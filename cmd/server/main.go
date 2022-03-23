@@ -13,8 +13,8 @@ func main() {
 
 	router := http.NewServeMux()
 
-	router.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("pong"))
+	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello from Cloud Run"))
 	})
 
 	router.HandleFunc("/long-running-job", func(w http.ResponseWriter, r *http.Request) {
@@ -35,7 +35,7 @@ func main() {
 
 	})
 
-	router.HandleFunc("/dump-enp", func(w http.ResponseWriter, r *http.Request) {
+	router.HandleFunc("/dump-env", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 
 		for _, v := range os.Environ() {
