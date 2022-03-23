@@ -35,6 +35,15 @@ func main() {
 
 	})
 
+	router.HandleFunc("/dump-enp", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+
+		for _, v := range os.Environ() {
+			fmt.Fprintf(w, "%s\n", v)
+		}
+
+	})
+
 	// start the server!
 	log.Printf("Listening on port %s", getDefaultPort())
 	if err := http.ListenAndServe(":"+getDefaultPort(), router); err != nil {
