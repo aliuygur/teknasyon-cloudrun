@@ -14,7 +14,7 @@ func main() {
 	router := http.NewServeMux()
 
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello from Cloud Run"))
+		w.Write([]byte("Hello from Cloud Run!"))
 	})
 
 	router.HandleFunc("/long-running-job", func(w http.ResponseWriter, r *http.Request) {
