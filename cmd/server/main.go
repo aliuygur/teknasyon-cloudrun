@@ -19,8 +19,11 @@ func main() {
 
 	router.HandleFunc("/long-running-job", func(w http.ResponseWriter, r *http.Request) {
 
+
+
 		time.Sleep(15 * time.Second)
 
+		w.Header().Set("Cache-Control", "public,max-age=86400")
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("ok!"))
 
